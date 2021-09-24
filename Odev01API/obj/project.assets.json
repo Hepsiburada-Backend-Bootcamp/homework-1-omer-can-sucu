@@ -227,11 +227,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\omer.sucu\\source\\repos\\Odev_01\\Odev01API\\Odev01API.csproj",
+      "projectUniqueName": "C:\\Users\\omer.sucu\\Documents\\GitHub\\homework-1-omer-can-sucu\\Odev01API\\Odev01API.csproj",
       "projectName": "Odev01API",
-      "projectPath": "C:\\Users\\omer.sucu\\source\\repos\\Odev_01\\Odev01API\\Odev01API.csproj",
+      "projectPath": "C:\\Users\\omer.sucu\\Documents\\GitHub\\homework-1-omer-can-sucu\\Odev01API\\Odev01API.csproj",
       "packagesPath": "C:\\Users\\omer.sucu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\omer.sucu\\source\\repos\\Odev_01\\Odev01API\\obj\\",
+      "outputPath": "C:\\Users\\omer.sucu\\Documents\\GitHub\\homework-1-omer-can-sucu\\Odev01API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

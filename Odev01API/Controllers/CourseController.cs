@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Odev01API.Dtos;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,6 @@ namespace Odev01API.Controllers
     public class CourseController : ControllerBase
     {
         private static List<CourseDto> _courseList;
-
 
         public CourseController()
         {
@@ -55,17 +55,36 @@ namespace Odev01API.Controllers
             else
                 return NotFound();
         }
-        [HttpGet("{lowestFirst?}")]
-        public async Task<IActionResult> GetCourses([FromRoute]bool? lowestFirst = null)
+
+        [HttpGet]
+        public async Task<IActionResult> GetCourses()
+        {
+            return await Task.FromResult(Ok(_courseList.Where(x => x.IsActive)));
+        }
+
+        [HttpGet("&lowestFirst={lowestFirst}")]
+        public async Task<IActionResult> GetCoursesLowestFirst(bool lowestFirst)
         {
             if (lowestFirst == true)
                 _courseList = _courseList.OrderBy(x => x.Price).ToList();
 
-            else if (lowestFirst == false)
+            else
                 _courseList = _courseList.OrderByDescending(x => x.Price).ToList();
 
 
             return await Task.FromResult(Ok(_courseList.Where(x => x.IsActive)));
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCourseDetail(int id)
+        {
+            var dbCourse = _courseList.FirstOrDefault(x => x.Id == id); 
+            
+            if (dbCourse != null)
+            {
+                return Ok(dbCourse);
+            }
+            else
+                return NotFound();
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCourse(int id)
